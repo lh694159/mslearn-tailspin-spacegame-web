@@ -10,6 +10,7 @@ pool:
 	vmImage: 'ubuntu-16.04'	
 	demands:
 	-npm
+
 variables:
 	buildConfiguration: 'Release'
 
@@ -26,7 +27,10 @@ inputs:
 	 verbose: false
 
 -Script: './node_modules/.bin/nodes-sass Tailspin.SpaceGame.Web/wwwroot --output Tailspin.SpaceGame.Web/wwwroot'
-	displayName: 'Run gulp tasks'
+	displayName: 'Compile Sass assets'
+
+-task: gulp@1
+displayName: 'Run gulp tassks'
 
 -script: 'echo $(Build.DefinitionName), $(Build.BuildId), $(Build.BuildNumber)" > buildinfo.txt'
 	displayName: 'Write build info'
